@@ -8495,11 +8495,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
+      "projectUniqueName": "C:\\Users\\tiago\\Dropbox\\Stuff\\IPS\\4º ano\\PV\\Projecto\\CandidaturaE+\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
       "projectName": "CandidaturaE+",
-      "projectPath": "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
-      "packagesPath": "C:\\Users\\Utilizador\\.nuget\\packages\\",
-      "outputPath": "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\obj\\",
+      "projectPath": "C:\\Users\\tiago\\Dropbox\\Stuff\\IPS\\4º ano\\PV\\Projecto\\CandidaturaE+\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
+      "packagesPath": "C:\\Users\\tiago\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tiago\\Dropbox\\Stuff\\IPS\\4º ano\\PV\\Projecto\\CandidaturaE+\\Projecto_ESW_1920\\CandidaturaE+\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
