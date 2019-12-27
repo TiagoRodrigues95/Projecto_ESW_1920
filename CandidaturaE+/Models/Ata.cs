@@ -14,8 +14,13 @@ namespace CandidaturaE_.Models
         public string Descricao { get; set; }
 
         //FK
-        public MarcacaoReuniao MarcacaoAta { get; set; }
-        public Docente DocenteId { get; set; }
-        public Aluno AlunoId { get; set; }
+        public int MR_Id { get; set; }
+
+        public int UtilizadorId { get; set; }
+
+        //Prop Navegacional
+        public MarcacaoReuniao MarcacaoReuniao { get; set; }
+
+        public Utilizador Utilizador { get; set; }
     }
 }
