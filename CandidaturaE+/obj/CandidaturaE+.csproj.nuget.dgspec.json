@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj": {}
+    "D:\\aplicações\\Engenharia Informática\\ESW\\Programa\\Projeto_ESW_rafael\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj": {}
   },
   "projects": {
-    "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj": {
+    "D:\\aplicações\\Engenharia Informática\\ESW\\Programa\\Projeto_ESW_rafael\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
+        "projectUniqueName": "D:\\aplicações\\Engenharia Informática\\ESW\\Programa\\Projeto_ESW_rafael\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
         "projectName": "CandidaturaE+",
-        "projectPath": "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
-        "packagesPath": "C:\\Users\\Utilizador\\.nuget\\packages\\",
-        "outputPath": "E:\\Projetos\\PV_Projeto\\Projecto_ESW_1920\\CandidaturaE+\\obj\\",
+        "projectPath": "D:\\aplicações\\Engenharia Informática\\ESW\\Programa\\Projeto_ESW_rafael\\Projecto_ESW_1920\\CandidaturaE+\\CandidaturaE+.csproj",
+        "packagesPath": "C:\\Users\\wrt\\.nuget\\packages\\",
+        "outputPath": "D:\\aplicações\\Engenharia Informática\\ESW\\Programa\\Projeto_ESW_rafael\\Projecto_ESW_1920\\CandidaturaE+\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Utilizador\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\wrt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
@@ -59,6 +54,10 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -90,6 +89,14 @@
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {

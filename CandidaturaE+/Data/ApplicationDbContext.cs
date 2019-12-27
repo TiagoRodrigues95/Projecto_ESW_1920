@@ -13,6 +13,10 @@ namespace CandidaturaE_.Data
             : base(options)
         {
         }
+        public DbSet<CandidaturaE_.Models.Ata> Ata { get; set; }
+        public DbSet<CandidaturaE_.Models.MarcacaoDuvidas> MarcacaoDuvidas { get; set; }
+        public DbSet<CandidaturaE_.Models.Inquerito_Resposta> Inquerito_Resposta { get; set; }
+        public DbSet<CandidaturaE_.Models.Inquerito> Inquerito { get; set; }
         //public DbSet<CandidaturaE_.Models.Utilizador> Utilizador { get; set; }
     }
 }

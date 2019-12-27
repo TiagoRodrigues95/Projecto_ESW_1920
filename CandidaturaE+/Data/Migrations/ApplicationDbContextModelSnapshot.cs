@@ -15,9 +15,144 @@ namespace CandidaturaE_.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CandidaturaE_.Models.Ata", b =>
+                {
+                    b.Property<int>("AtaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MR_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MarcacaoReuniaoMR_Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UtilizadorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("AtaId");
+
+                    b.HasIndex("MarcacaoReuniaoMR_Id");
+
+                    b.HasIndex("UtilizadorId1");
+
+                    b.ToTable("Ata");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.Inquerito", b =>
+                {
+                    b.Property<int>("InqueritoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnoLetivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InqueritoId");
+
+                    b.ToTable("Inquerito");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.Inquerito_Resposta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnoLetivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InqueritoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UtilizadorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InqueritoId");
+
+                    b.HasIndex("UtilizadorId1");
+
+                    b.ToTable("Inquerito_Resposta");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.MarcacaoDuvidas", b =>
+                {
+                    b.Property<int>("MRId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("HoraId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UtilizadorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("MRId");
+
+                    b.HasIndex("UtilizadorId1");
+
+                    b.ToTable("MarcacaoDuvidas");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.MarcacaoReuniao", b =>
+                {
+                    b.Property<int>("MR_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("HoraId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UtilizadorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("MR_Id");
+
+                    b.HasIndex("UtilizadorId1");
+
+                    b.ToTable("MarcacaoReuniao");
+                });
 
             modelBuilder.Entity("CandidaturaE_.Models.Utilizador", b =>
                 {
@@ -231,6 +366,44 @@ namespace CandidaturaE_.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.Ata", b =>
+                {
+                    b.HasOne("CandidaturaE_.Models.MarcacaoReuniao", "MarcacaoReuniao")
+                        .WithMany()
+                        .HasForeignKey("MarcacaoReuniaoMR_Id");
+
+                    b.HasOne("CandidaturaE_.Models.Utilizador", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorId1");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.Inquerito_Resposta", b =>
+                {
+                    b.HasOne("CandidaturaE_.Models.Inquerito", "Inquerito")
+                        .WithMany()
+                        .HasForeignKey("InqueritoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CandidaturaE_.Models.Utilizador", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorId1");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.MarcacaoDuvidas", b =>
+                {
+                    b.HasOne("CandidaturaE_.Models.Utilizador", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorId1");
+                });
+
+            modelBuilder.Entity("CandidaturaE_.Models.MarcacaoReuniao", b =>
+                {
+                    b.HasOne("CandidaturaE_.Models.Utilizador", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
