@@ -1,3 +1,0 @@
-E:\Projetos\VisualStudio\Notificacao\Notificacoes\bin\Microsoft.NodejsTools.WebRole.dll
-D:\aplicações\Engenharia Informática\ESW\Programa\Projeto_ESW_rafael\Projecto_ESW_1920\Notificacoes\obj\Debug\Notificacoes.njsprojAssemblyReference.cache
-D:\aplicações\Engenharia Informática\ESW\Programa\Projeto_ESW_rafael\Projecto_ESW_1920\Notificacoes\bin\Microsoft.NodejsTools.WebRole.dll
