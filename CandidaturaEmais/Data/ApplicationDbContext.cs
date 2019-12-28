@@ -13,5 +13,6 @@ namespace CandidaturaEmais.Data
             : base(options)
         {
         }
+        public DbSet<CandidaturaEmais.Models.Notificacao> Notificacao { get; set; }
     }
 }
