@@ -15,16 +15,16 @@ namespace CandidaturaEmais.Models
         public int Empresa_Id { get; set; }
 
         [Display(Name = "Proposta")]
-        [Required(ErrorMessage = "{0}  é obrigatório")]
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
         public string PropostaUrl { get; set; }
 
         [Display(Name = "Protocolo de Empresa")]
-        [Required(ErrorMessage = "{0}  é obrigatório")]
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
         public string ProtocoloUrl { get; set; }
 
-        
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy H:mm:ss zzz}")]
         public DateTime Timestamp { get; set; }
 
         //Prop Navegacional
