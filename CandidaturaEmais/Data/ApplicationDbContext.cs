@@ -19,5 +19,7 @@ namespace CandidaturaEmais.Data
         public DbSet<CandidaturaEmais.Models.Inquerito_Resposta> Inquerito_Resposta { get; set; }
         public DbSet<CandidaturaEmais.Models.Hora> Hora { get; set; }
 
+        public DbSet<CandidaturaEmais.Models.MarcacaoReuniao> MarcacaoReuniao { get; set; }
+
     }
 }
