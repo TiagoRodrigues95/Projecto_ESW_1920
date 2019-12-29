@@ -15,5 +15,10 @@ namespace CandidaturaEmais.Models
 
         public string Url { get; set; }
 
+        public Inquerito()
+        {
+            this.Data = DateTime.UtcNow;
+            this.AnoLetivo = "19/20";
+        }
     }
 }

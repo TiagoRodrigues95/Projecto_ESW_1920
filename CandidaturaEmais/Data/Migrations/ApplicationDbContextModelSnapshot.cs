@@ -19,6 +19,61 @@ namespace CandidaturaEmais.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CandidaturaEmais.Models.Inquerito", b =>
+                {
+                    b.Property<int>("InqueritoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnoLetivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InqueritoId");
+
+                    b.ToTable("Inquerito");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Inquerito_Resposta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnoLetivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InqueritoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UtilizadorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InqueritoId");
+
+                    b.HasIndex("UtilizadorId1");
+
+                    b.ToTable("Inquerito_Resposta");
+                });
+
             modelBuilder.Entity("CandidaturaEmais.Models.Empresa", b =>
                 {
                     b.Property<int>("EmpresaId")
@@ -288,6 +343,19 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Inquerito_Resposta", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.Inquerito", "Inquerito")
+                        .WithMany()
+                        .HasForeignKey("InqueritoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Utilizador")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
