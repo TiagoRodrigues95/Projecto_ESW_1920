@@ -12,12 +12,12 @@ namespace CandidaturaEmais.Models
         public int EmpresaId { get; set; }
 
         [Display(Name="Nome da Empresa")]
-        [Required(ErrorMessage = "{0} is required")]
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
         public string Nome { get; set; }
 
         [Display(Name ="Representante")]
-        [Required(ErrorMessage = "{0} is required")]
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
         public string Representante { get; set; }
 
@@ -26,7 +26,7 @@ namespace CandidaturaEmais.Models
         public string Contacto { get; set; }
 
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "{0} is required")]
+        [Required(ErrorMessage = "{0} é obrigatório")]
         [EmailAddress]
         public string email { get; set; }
 
