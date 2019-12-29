@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CandidaturaE_.Models
+namespace CandidaturaEmais.Models
 {
     public class Inquerito
     {
@@ -20,6 +20,5 @@ namespace CandidaturaE_.Models
             this.Data = DateTime.UtcNow;
             this.AnoLetivo = "19/20";
         }
-
     }
 }

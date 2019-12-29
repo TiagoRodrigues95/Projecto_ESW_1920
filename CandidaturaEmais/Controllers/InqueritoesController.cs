@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CandidaturaE_.Data;
-using CandidaturaE_.Models;
+using CandidaturaEmais.Data;
+using CandidaturaEmais.Models;
 
-namespace CandidaturaE_.Controllers
+namespace CandidaturaEmais.Controllers
 {
     public class InqueritoesController : Controller
     {

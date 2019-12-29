@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using CandidaturaE_.Data;
-using CandidaturaE_.Models;
+using CandidaturaEmais.Data;
+using CandidaturaEmais.Models;
 
-namespace CandidaturaE_.Controllers
+namespace CandidaturaEmais.Controllers
 {
     public class Inquerito_RespostaController : Controller
     {
@@ -48,7 +48,7 @@ namespace CandidaturaE_.Controllers
         // GET: Inquerito_Resposta/Create
         public IActionResult Create()
         {
-            ViewData["InqueritoId"] = new SelectList(_context.Set<Inquerito>(), "InqueritoId", "InqueritoId");
+            ViewData["InqueritoId"] = new SelectList(_context.Inquerito, "InqueritoId", "InqueritoId");
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace CandidaturaE_.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InqueritoId"] = new SelectList(_context.Set<Inquerito>(), "InqueritoId", "InqueritoId", inquerito_Resposta.InqueritoId);
+            ViewData["InqueritoId"] = new SelectList(_context.Inquerito, "InqueritoId", "InqueritoId", inquerito_Resposta.InqueritoId);
             return View(inquerito_Resposta);
         }
 
@@ -82,7 +82,7 @@ namespace CandidaturaE_.Controllers
             {
                 return NotFound();
             }
-            ViewData["InqueritoId"] = new SelectList(_context.Set<Inquerito>(), "InqueritoId", "InqueritoId", inquerito_Resposta.InqueritoId);
+            ViewData["InqueritoId"] = new SelectList(_context.Inquerito, "InqueritoId", "InqueritoId", inquerito_Resposta.InqueritoId);
             return View(inquerito_Resposta);
         }
 
@@ -118,7 +118,7 @@ namespace CandidaturaE_.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["InqueritoId"] = new SelectList(_context.Set<Inquerito>(), "InqueritoId", "InqueritoId", inquerito_Resposta.InqueritoId);
+            ViewData["InqueritoId"] = new SelectList(_context.Inquerito, "InqueritoId", "InqueritoId", inquerito_Resposta.InqueritoId);
             return View(inquerito_Resposta);
         }
 

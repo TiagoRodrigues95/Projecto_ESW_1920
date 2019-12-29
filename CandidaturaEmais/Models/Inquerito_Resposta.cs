@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CandidaturaE_.Models
+namespace CandidaturaEmais.Models
 {
     public class Inquerito_Resposta
     {
