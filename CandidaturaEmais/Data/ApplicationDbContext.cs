@@ -14,5 +14,6 @@ namespace CandidaturaEmais.Data
         {
         }
         public DbSet<CandidaturaEmais.Models.Notificacao> Notificacao { get; set; }
+        public DbSet<CandidaturaEmais.Models.Empresa> Empresa { get; set; }
     }
 }
