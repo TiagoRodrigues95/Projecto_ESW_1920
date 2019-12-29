@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CandidaturaEmais.Models
+namespace CandidaturaE_.Models
 {
     public class Inquerito
     {
@@ -14,6 +14,12 @@ namespace CandidaturaEmais.Models
         public string AnoLetivo { get; set; }
 
         public string Url { get; set; }
+
+        public Inquerito()
+        {
+            this.Data = DateTime.UtcNow;
+            this.AnoLetivo = "19/20";
+        }
 
     }
 }
