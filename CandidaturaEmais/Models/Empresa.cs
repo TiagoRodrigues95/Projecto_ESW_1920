@@ -11,14 +11,14 @@ namespace CandidaturaEmais.Models
         [Key]
         public int EmpresaId { get; set; }
 
-        [Display(Name="Empresa")]
+        [Display(Name="Nome da Empresa")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(9, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
+        [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
         public string Nome { get; set; }
 
         [Display(Name ="Representatnte")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(9, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
+        [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}")]
         public string Representante { get; set; }
 
         [Display(Name ="Número de Contato")]
