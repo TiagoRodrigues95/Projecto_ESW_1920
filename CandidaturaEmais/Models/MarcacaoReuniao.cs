@@ -16,6 +16,6 @@ namespace CandidaturaEmais.Models
 
         public int AlunoId { get; set; }
         //Prop Navegacional
-        public Aluno Aluno { get; set; }
+        public Utilizador Aluno { get; set; }
     }
 }
