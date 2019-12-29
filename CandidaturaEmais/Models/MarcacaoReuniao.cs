@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,7 +8,8 @@ namespace CandidaturaEmais.Models
 {
     public class MarcacaoReuniao
     {
-        public int MR_Id { get; set; }
+        [Key]
+        public int MarcacaoReuniaoId { get; set; }
 
         //FK
         public int HoraId { get; set; }
