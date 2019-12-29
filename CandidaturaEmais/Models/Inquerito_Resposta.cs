@@ -18,11 +18,11 @@ namespace CandidaturaEmais.Models
         //FK
         public int InqueritoId { get; set; }
 
-        public int AlunoId { get; set; }
+        public int UtilizadorId { get; set; }
 
         //Prop Navegacional
         public Inquerito Inquerito { get; set; }
 
-        public Aluno Aluno { get; set; }
+        public Utilizador Utilizador { get; set; }
     }
 }
