@@ -17,17 +17,18 @@ namespace CandidaturaEmais.Models
         public int NotificacaoId { get; set; }
 
         [Display(Name = "Email Destino")]
-        [Required(ErrorMessage = "Campo obrigatório.")]
-        [EmailAddress(ErrorMessage = "Endereço de email inválido")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [EmailAddress(ErrorMessage = "{0} inválido!")]
         public string Para { get; set; }
 
         [Display(Name = "Assunto")]
-        [Required(ErrorMessage = "Campo obrigatório.")]
-        [StringLength(255, MinimumLength = 3, ErrorMessage = "")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [StringLength(255, MinimumLength = 3, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}!")]
         public string Assunto { get; set; }
 
-        [Required(ErrorMessage = "Campo obrigatório")]
         [Display(Name = "Mensagem")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [StringLength(255, MinimumLength = 3, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}!")]
         public string Mensagem { get; set; }
 
         [Display(Name = "Data de Envio")]

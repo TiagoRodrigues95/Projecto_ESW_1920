@@ -18,7 +18,12 @@ namespace CandidaturaEmais.Models
         public int MarcacaoReuniaoId { get; set; }
 
         //FK
+        [Display(Name = "Hora")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
         public int HoraId { get; set; }
+
+        [Display(Name = "Aluno")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
         public int AlunoId { get; set; }
 
         //Prop Navegacional
