@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace CandidaturaEmais.Models
 {
+    /// <summary>
+    /// Esta classe representa uma marcação de reunião.
+    /// A marcação de uma reunião é constituída por incluir hora, 
+    /// docente e aluno. Como a hora já possui ligação ao docente,
+    /// não é necessário fazer uma ligação a esta classe.
+    /// </summary>
     public class MarcacaoReuniao
     {
         [Key]

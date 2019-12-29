@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CandidaturaEmais.Models
 {
+    /// <summary>
+    /// Esta classe representa a estrutura de dados de uma empresa.
+    /// A empresa é identificada pelo seu nome, o nome do seu representante,
+    /// contato telefónico e endereço de email.
+    /// </summary>
     public class Empresa
     {
         [Key]

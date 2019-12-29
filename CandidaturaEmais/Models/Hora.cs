@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace CandidaturaEmais.Models
 {
+    /// <summary>
+    /// Esta classe representa a estrutura de uma hora utilizada para 
+    /// marcações (e.g. marcar reuniões).
+    /// A hora é constituída por hora de inicio e hora de fim, e por norma
+    /// tem como intervalo de 1h entre a hora de inicio e a hora de fim.
+    /// </summary>
     public class Hora
     {
         // pk
