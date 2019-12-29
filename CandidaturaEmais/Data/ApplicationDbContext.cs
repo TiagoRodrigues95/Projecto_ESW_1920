@@ -13,7 +13,9 @@ namespace CandidaturaEmais.Data
             : base(options)
         {
         }
-        public DbSet<CandidaturaEmais.Models.Inquerito> Inquerito { get; set; }
-        public DbSet<CandidaturaEmais.Models.Inquerito_Resposta> Inquerito_Resposta { get; set; }
+        public DbSet<CandidaturaEmais.Models.Notificacao> Notificacao { get; set; }
+        public DbSet<CandidaturaEmais.Models.Empresa> Empresa { get; set; }
+        public DbSet<CandidaturaEmais.Models.Inquerito> Inquerito { get; set; }
+        public DbSet<CandidaturaEmais.Models.Inquerito_Resposta> Inquerito_Resposta { get; set; }
     }
 }
