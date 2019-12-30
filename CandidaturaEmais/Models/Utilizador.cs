@@ -21,12 +21,12 @@ namespace CandidaturaEmais.Models
 
         public int Telefone { get; set; }
 
-        // refecencia ao modelo Mensagem
+        // refecencia ao modelo MensagemConversa
 
         [InverseProperty("UtilizadorIniciante")]
-        public ICollection<Mensagem> UtilizadorIniciante { get; set; }
+        public ICollection<MensagemConversa> UtilizadorIniciou { get; set; }
 
         [InverseProperty("UtilizadorDestinatario")]
-        public ICollection<Mensagem> UtilizadorDestinatario { get; set; }
+        public ICollection<MensagemConversa> UtilizadorRespondeu { get; set; }
     }
 }

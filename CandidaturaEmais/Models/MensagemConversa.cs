@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CandidaturaEmais.Models
 {
-    public class Mensagem
+    public class MensagemConversa
     {
         [Key]
         public int MensagemId { get; set; }
