@@ -1,0 +1,56 @@
+﻿@page
+@model CandidaturaEmais.ConversasModel
+@{
+    ViewData["Title"] = "Conversas";
+    ViewData["ActivePage"] = ManageNavPages.MensagemConversas;
+}
+
+<h4>@ViewData["Title"]</h4>
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MensagemConversa[0].Mensagem)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MensagemConversa[0].UtilizadorId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MensagemConversa[0].utilizador2Id)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MensagemConversa)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mensagem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UtilizadorId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.utilizador2Id)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.MensagemId">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.MensagemId">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.MensagemId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

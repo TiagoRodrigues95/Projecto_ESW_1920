@@ -21,7 +21,7 @@ namespace CandidaturaEmais.Areas.Identity.Pages.Account.Manage
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
         // conversa
-        public static string MensagemConversa => "Conversas";
+        public static string MensagemConversas => "Conversas";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
 
@@ -36,7 +36,7 @@ namespace CandidaturaEmais.Areas.Identity.Pages.Account.Manage
         public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
 
         // conversa
-        public static string MensagemConversaNavClass(ViewContext viewContext) => PageNavClass(viewContext, MensagemConversa);
+        public static string MensagemConversasNavClass(ViewContext viewContext) => PageNavClass(viewContext, MensagemConversas);
 
         private static string PageNavClass(ViewContext viewContext, string page)
         {
