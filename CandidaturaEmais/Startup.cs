@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -76,6 +76,85 @@ namespace CandidaturaEmais
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            // Notificações
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
+                    name: "Notificacoes",
+                    pattern: "/Notificacoes",
+                    defaults: new
+                    {
+                        controller = "Notificacoes",
+                        action = "Index"
+                    });
+                endpoints.MapRazorPages();
+            });
+
+            // Hora
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
+                    name: "Horas",
+                    pattern: "/Horas",
+                    defaults: new
+                    {
+                        controller = "Horas",
+                        action = "Index"
+                    });
+                endpoints.MapRazorPages();
+            });
+
+            // Empresa
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
+                    name: "Empresas",
+                    pattern: "/Empresas",
+                    defaults: new
+                    {
+                        controller = "Empresas",
+                        action = "Index"
+                    });
+                endpoints.MapRazorPages();
+            });
+
+            // Tutor Empresa
+            //app.UseEndpoints(endpoints => {
+            //    endpoints.MapControllerRoute(
+            //        name: "Tutores",
+            //        pattern: "/Tutores",
+            //        defaults: new
+            //        {
+            //            controller = "Tutores",
+            //            action = "Index"
+            //        });
+            //    endpoints.MapRazorPages();
+            //});
+
+            // Estagios
+            //app.UseEndpoints(endpoints => {
+            //    endpoints.MapControllerRoute(
+            //        name: "Estagios",
+            //        pattern: "/Estagios",
+            //        defaults: new
+            //        {
+            //            controller = "Estagios",
+            //            action = "Index"
+            //        });
+            //    endpoints.MapRazorPages();
+            //});
+
+            // conversas dentro do perfil
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllerRoute(
+                    name: "MensagemConversas",
+                    pattern: "/Conversas",
+                    defaults: new
+                    {
+                        controller = "MensagemConversas",
+                        action = "Index"
+                    });
+                endpoints.MapRazorPages();
+            });
+
         }
     }
 }
