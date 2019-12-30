@@ -54,7 +54,7 @@ namespace CandidaturaEmais.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MensagemId,UtilizadorId,utilizador2Id")] MensagemConversa mensagemConversa)
+        public async Task<IActionResult> Create([Bind("MensagemId,Mensagem,UtilizadorId,utilizador2Id")] MensagemConversa mensagemConversa)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace CandidaturaEmais.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MensagemId,UtilizadorId,utilizador2Id")] MensagemConversa mensagemConversa)
+        public async Task<IActionResult> Edit(int id, [Bind("MensagemId,Mensagem,UtilizadorId,utilizador2Id")] MensagemConversa mensagemConversa)
         {
             if (id != mensagemConversa.MensagemId)
             {
