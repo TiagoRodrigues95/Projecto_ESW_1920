@@ -21,5 +21,7 @@ namespace CandidaturaEmais.Data
 
         public DbSet<CandidaturaEmais.Models.MarcacaoReuniao> MarcacaoReuniao { get; set; }
 
+        public DbSet<CandidaturaEmais.Models.MensagemConversa> MensagemConversa { get; set; }
+
     }
 }

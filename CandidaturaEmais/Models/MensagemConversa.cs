@@ -11,7 +11,13 @@ namespace CandidaturaEmais.Models
         [Key]
         public int MensagemId { get; set; }
 
+        [Display(Name="Mensagem")]
+        public int Mensagem { get; set; }
+
+        // pk
+        [Display(Name="De")]
         public int UtilizadorId { get; set; }
+        [Display(Name="Para")]
         public int utilizador2Id { get; set; }
 
         public Utilizador UtilizadorIniciante { get; set; }
