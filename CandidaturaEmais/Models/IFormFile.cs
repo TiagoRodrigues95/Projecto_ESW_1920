@@ -18,7 +18,6 @@ namespace CandidaturaEmais.Models
         string FileName { get; }
         Stream OpenReadStream();
         void CopyTo(Stream target);
-        Task CopyToAsync(Stream target, CancellationToken token);
-        Task CopyToAsync(FileStream stream);
+        Task CopyToAsync(Stream target, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

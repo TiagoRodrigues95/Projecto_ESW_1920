@@ -5,18 +5,15 @@ using System.Threading.Tasks;
 
 namespace CandidaturaEmais.Models
 {
-    public class Inquerito
+    public class Inquerito_viewmodel
     {
-        public int InqueritoId { get; set; }
-
         public DateTime Data { get; set; }
 
         public string AnoLetivo { get; set; }
 
-        //public IFormFile PDF { get; set; }
-        public string Url { get; set; }
+        public IFormFile Url { get; set; }
 
-        public Inquerito()
+        public Inquerito_viewmodel()
         {
             this.Data = DateTime.UtcNow;
         }

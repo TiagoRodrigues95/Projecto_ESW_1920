@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CandidaturaEmais.Data;
 using CandidaturaEmais.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CandidaturaEmais.Controllers
 {
     public class InqueritoesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment hostingEnvironment;
 
         public InqueritoesController(ApplicationDbContext context)
         {
@@ -54,15 +57,45 @@ namespace CandidaturaEmais.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("InqueritoId,Data,AnoLetivo,Url")] Inquerito inquerito)
+        public async Task<IActionResult> Create(Inquerito_viewmodel Inquerito_viewmodel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(inquerito);
+
+                string uniqueFileName = null;
+
+                // If the Photo property on the incoming model object is not null, then the user
+                // has selected an image to upload.
+                if (Inquerito_viewmodel.Url != null)
+                {
+                    // The image must be uploaded to the images folder in wwwroot
+                    // To get the path of the wwwroot folder we are using the inject
+                    // HostingEnvironment service provided by ASP.NET Core
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "ficheiros");
+                    // To make sure the file name is unique we are appending a new
+                    // GUID value and and an underscore to the file name
+                    uniqueFileName = Guid.NewGuid().ToString() + "_" + Inquerito_viewmodel.Url.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                    // Use CopyTo() method provided by IFormFile interface to
+                    // copy the file to wwwroot/images folder
+                    Inquerito_viewmodel.Url.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+
+                Inquerito newInquerito = new Inquerito
+                {
+                    Data = Inquerito_viewmodel.Data,
+                    AnoLetivo = Inquerito_viewmodel.AnoLetivo,
+                    // Store the file name in PhotoPath property of the employee object
+                    // which gets saved to the Employees database table
+                    Url = uniqueFileName
+                };
+
+                _context.Add(newInquerito);
+                //_context.Add(inquerito);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            return View(inquerito);
+            return View();
         }
 
         // GET: Inqueritoes/Edit/5

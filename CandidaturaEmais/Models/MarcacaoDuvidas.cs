@@ -12,7 +12,7 @@ namespace CandidaturaEmais.Models
         //FK
         public int HoraId { get; set; }
 
-        public int AlunoId { get; set; }
+        public int UtilizadorId { get; set; }
 
         //Prop Navegacional
         public Aluno Aluno { get; set; }

@@ -26,6 +26,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    var filePath = "~/ficheiros/" + (item.Url ?? "nofile.pdf");
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Data)

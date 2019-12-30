@@ -1,4 +1,4 @@
-﻿@model CandidaturaEmais.Models.Inquerito
+﻿@model CandidaturaEmais.Models.Inquerito_viewmodel
 
 @{
     ViewData["Title"] = "Create";
@@ -19,9 +19,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Url" class="control-label"></label>
-                <input asp-for="Url" class="form-control" type="file" name="files" multiple />
+                <input asp-for="Url" class="form-control" />
                 <span asp-validation-for="Url" class="text-danger"></span>
             </div>
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
