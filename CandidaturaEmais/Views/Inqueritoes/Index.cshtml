@@ -35,7 +35,8 @@
                 @Html.DisplayFor(modelItem => item.AnoLetivo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Url)
+                
+                @Html.ActionLink("View", "RetrieveFile", new { id = item.InqueritoId }, new { @class = "btn btn-primary btn-sm fa fa-eye", @style = "color:white;background-color:#5bc0de;", @target = "_blank" })
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.InqueritoId">Edit</a> |

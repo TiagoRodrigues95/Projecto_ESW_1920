@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CandidaturaEmais.Data;
 using CandidaturaEmais.Models;
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
+using CandidaturaEmais.ViewModels;
 
 namespace CandidaturaEmais.Controllers
 {
@@ -17,9 +18,10 @@ namespace CandidaturaEmais.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public InqueritoesController(ApplicationDbContext context)
+        public InqueritoesController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Inqueritoes
@@ -66,19 +68,23 @@ namespace CandidaturaEmais.Controllers
 
                 // If the Photo property on the incoming model object is not null, then the user
                 // has selected an image to upload.
-                if (Inquerito_viewmodel.Url != null)
+                if (Inquerito_viewmodel.Url != null && Inquerito_viewmodel.Url.Count > 0)
                 {
-                    // The image must be uploaded to the images folder in wwwroot
-                    // To get the path of the wwwroot folder we are using the inject
-                    // HostingEnvironment service provided by ASP.NET Core
-                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "ficheiros");
-                    // To make sure the file name is unique we are appending a new
-                    // GUID value and and an underscore to the file name
-                    uniqueFileName = Guid.NewGuid().ToString() + "_" + Inquerito_viewmodel.Url.FileName;
-                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                    // Use CopyTo() method provided by IFormFile interface to
-                    // copy the file to wwwroot/images folder
-                    Inquerito_viewmodel.Url.CopyTo(new FileStream(filePath, FileMode.Create));
+                    // Loop thru each selected file
+                    foreach (ViewModels.IFormFile url in Inquerito_viewmodel.Url)
+                    {
+                        // The image must be uploaded to the images folder in wwwroot
+                        // To get the path of the wwwroot folder we are using the inject
+                        // HostingEnvironment service provided by ASP.NET Core
+                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "ficheiros");
+                        // To make sure the file name is unique we are appending a new
+                        // GUID value and and an underscore to the file name
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + url.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        // Use CopyTo() method provided by IFormFile interface to
+                        // copy the file to wwwroot/images folder
+                        url.CopyTo(new FileStream(filePath, FileMode.Create));
+                    }
                 }
 
                 Inquerito newInquerito = new Inquerito
@@ -93,7 +99,7 @@ namespace CandidaturaEmais.Controllers
                 _context.Add(newInquerito);
                 //_context.Add(inquerito);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = newInquerito.InqueritoId });
             }
             return View();
         }
