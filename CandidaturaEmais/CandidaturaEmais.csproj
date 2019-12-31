@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -8,6 +8,12 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20191229111404_altera_empressa.cs" />
     <Compile Remove="Data\Migrations\20191229111404_altera_empressa.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191230160349_add_messagem_conversa.cs" />
+    <Compile Remove="Data\Migrations\20191230160349_add_messagem_conversa.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191231102052_add_marcacaoduvidas.cs" />
+    <Compile Remove="Data\Migrations\20191231102052_add_marcacaoduvidas.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191231102513_add_MarcacaoDuvidas.cs" />
+    <Compile Remove="Data\Migrations\20191231102513_add_MarcacaoDuvidas.Designer.cs" />
   </ItemGroup>
 
 

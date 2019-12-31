@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CandidaturaEmais.Models
+namespace CandidaturaEmais.ViewModels
 {
     public class Inquerito_viewmodel
     {
@@ -11,7 +11,7 @@ namespace CandidaturaEmais.Models
 
         public string AnoLetivo { get; set; }
 
-        public IFormFile Url { get; set; }
+        public List<IFormFile> Url { get; set; }
 
         public Inquerito_viewmodel()
         {

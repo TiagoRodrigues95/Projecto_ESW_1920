@@ -161,9 +161,6 @@ namespace CandidaturaEmais.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Mensagem")
-                        .HasColumnType("int");
-
                     b.Property<string>("UtilizadorDestinatarioId")
                         .HasColumnType("nvarchar(450)");
 
