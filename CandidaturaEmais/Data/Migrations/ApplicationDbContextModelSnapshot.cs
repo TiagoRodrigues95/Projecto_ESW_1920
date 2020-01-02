@@ -27,7 +27,8 @@ namespace CandidaturaEmais.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Contacto")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -361,7 +362,7 @@ namespace CandidaturaEmais.Data.Migrations
             modelBuilder.Entity("CandidaturaEmais.Models.Hora", b =>
                 {
                     b.HasOne("CandidaturaEmais.Models.Utilizador", "Utilizador")
-                        .WithMany()
+                        .WithMany("Horas")
                         .HasForeignKey("UtilizadorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
