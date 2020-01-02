@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace CandidaturaEmais.Models
@@ -24,6 +24,6 @@ namespace CandidaturaEmais.Models
         public int UtilizadorId { get; set; }
 
         // prop. navegação
-        public Utilizador Docente { get; set; }
+        public Utilizador Utilizador { get; set; }
     }
 }
