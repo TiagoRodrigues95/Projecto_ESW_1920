@@ -25,5 +25,8 @@ namespace CandidaturaEmais.Data
 
         public DbSet<CandidaturaEmais.Models.Empresa> Empresa { get; set; }
 
+
+        public DbSet<CandidaturaEmais.Models.Tutor> Tutor { get; set; }
+
     }
 }
