@@ -22,5 +22,8 @@ namespace CandidaturaEmais.Data
 
         public DbSet<MarcacaoDuvidas> MarcacaoDuvidas { get; set; }
 
+
+        public DbSet<CandidaturaEmais.Models.Empresa> Empresa { get; set; }
+
     }
 }
