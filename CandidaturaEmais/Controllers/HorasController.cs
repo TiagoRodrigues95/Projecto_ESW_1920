@@ -22,7 +22,9 @@ namespace CandidaturaEmais.Controllers
         // GET: Horas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Hora.ToListAsync());
+            var horas = _context.Hora.Include(m => m.Utilizador);
+
+            return View(await horas.ToListAsync());
         }
 
         // GET: Horas/Details/5

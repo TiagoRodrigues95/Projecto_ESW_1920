@@ -20,13 +20,13 @@ namespace CandidaturaEmais.Models
         /// <value>Hora que indica a disponibilidade de marcação</value>
         [Display(Name = "Data de Inicio")]
         [Required(ErrorMessage = "{0} é obrigatório!")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy H:mm:ss zzz}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy H:mm:ss}")]
         public DateTime HoraInicio { get; set; }
 
         /// <value>Hora que termina a disponibilidade de marcação</value>
         [Display(Name = "Data de Fim")]
         [Required(ErrorMessage = "{0} é obrigatório!")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy H:mm:ss zzz}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy H:mm:ss}")]
         public DateTime HoraFim { get; set; }
 
         /// <value>ForeignKey - ID Utilizador a que pertence a hora</value>
