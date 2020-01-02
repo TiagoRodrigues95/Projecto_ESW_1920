@@ -148,6 +148,36 @@ namespace CandidaturaEmais.Data.Migrations
                     b.ToTable("Notificacao");
                 });
 
+            modelBuilder.Entity("CandidaturaEmais.Models.Tutor", b =>
+                {
+                    b.Property<int>("TutorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contacto")
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("TutorId");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Tutor");
+                });
+
             modelBuilder.Entity("CandidaturaEmais.Models.Utilizador", b =>
                 {
                     b.Property<string>("Id")
@@ -377,6 +407,15 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
                         .WithMany()
                         .HasForeignKey("HoraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Tutor", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.Empresa", "Empresa")
+                        .WithMany("Tutores")
+                        .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

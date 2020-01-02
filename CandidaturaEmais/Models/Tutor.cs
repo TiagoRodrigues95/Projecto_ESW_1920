@@ -15,7 +15,7 @@ namespace CandidaturaEmais.Models
         public int TutorId { get; set; }
 
         /// <value>Nome</value>
-        [Display(Name = "Nome da Empresa")]
+        [Display(Name = "Nome")]
         [Required(ErrorMessage = "{0} é obrigatório!")]
         [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}!")]
 
