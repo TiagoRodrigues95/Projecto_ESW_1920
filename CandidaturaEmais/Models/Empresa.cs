@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CandidaturaEmais.Models
 {
@@ -35,5 +36,8 @@ namespace CandidaturaEmais.Models
         [Required(ErrorMessage = "{0} é obrigatório!")]
         [EmailAddress(ErrorMessage = "{0} inválido!")]
         public string email { get; set; }
+
+        /// <value>Propriedade navegacional (one-to-many) - Tutores</value>
+        public List<Tutor> Tutores { get; set; }
     }
 }
