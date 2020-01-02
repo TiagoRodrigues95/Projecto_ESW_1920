@@ -11,15 +11,23 @@ namespace CandidaturaEmais.Models
         [Key]
         public int NotificacaoId { get; set; }
 
-        [Required]
+        [Display(Name = "Email Destino")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [EmailAddress(ErrorMessage = "{0} inválido!")]
         public string Para { get; set; }
 
-        [Required]
+        [Display(Name = "Assunto")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [StringLength(255, MinimumLength = 3, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}!")]
         public string Assunto { get; set; }
-        
-        [Required]
+
+        [Display(Name = "Mensagem")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [StringLength(255, MinimumLength = 3, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}!")]
         public string Mensagem { get; set; }
-        
+
+        [Display(Name = "Data de Envio")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy H:mm:ss zzz}")]
         public DateTime Timestamp { get; set; }
     }
 }
