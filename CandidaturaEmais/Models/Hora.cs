@@ -35,7 +35,7 @@ namespace CandidaturaEmais.Models
         [Required(ErrorMessage = "{0} é obrigatório!")]
         public string UtilizadorId { get; set; }
 
-        // prop. navegação
+        /// <value>Propriedade de Nvaegação - modelo do Utilizador a que pertence a hora</value>
         public Utilizador Utilizador { get; set; }
     }
 }
