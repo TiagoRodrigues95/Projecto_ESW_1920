@@ -15,5 +15,7 @@ namespace CandidaturaEmais.Data
         }
 
         public DbSet<Notificacao> Notificacao { get; set; }
+
+
     }
 }
