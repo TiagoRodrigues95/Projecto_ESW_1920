@@ -2,12 +2,16 @@
 
 @{
     ViewData["Title"] = "Index";
+    ViewData["Create"] = "Nova Marcacao";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">
+        <img src="~/img/iconfinder_button-add_sticker_68486.png" />
+        @ViewData["Create"]
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -31,9 +35,15 @@
                 @Html.DisplayFor(modelItem => item.Hora.HoraId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MD_Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MD_Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MD_Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.MD_Id">
+                    <img class="icon-action-table" src="~/img/iconfinder_pencil_sticker_68596.png" />
+                </a> |
+                <a asp-action="Details" asp-route-id="@item.MD_Id">
+                    <img class="icon-action-table" src="~/img/iconfinder_document_sticker_68525.png" />
+                </a> |
+                <a asp-action="Delete" asp-route-id="@item.MD_Id">
+                   <img class="icon-action-table" src="~/img/iconfinder_bin_sticker_68480.png" />
+                </a>
             </td>
         </tr>
 }

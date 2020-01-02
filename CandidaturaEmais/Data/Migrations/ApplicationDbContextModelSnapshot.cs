@@ -66,6 +66,31 @@ namespace CandidaturaEmais.Data.Migrations
                     b.ToTable("Inquerito");
                 });
 
+            modelBuilder.Entity("CandidaturaEmais.Models.MarcacaoDuvidas", b =>
+                {
+                    b.Property<int>("MD_Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AlunoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AlunoId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("HoraId")
+                        .HasColumnType("int");
+
+                    b.HasKey("MD_Id");
+
+                    b.HasIndex("AlunoId1");
+
+                    b.HasIndex("HoraId");
+
+                    b.ToTable("MarcacaoDuvidas");
+                });
+
             modelBuilder.Entity("CandidaturaEmais.Models.Notificacao", b =>
                 {
                     b.Property<int>("NotificacaoId")
@@ -311,6 +336,19 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasOne("CandidaturaEmais.Models.Utilizador", "Utilizador")
                         .WithMany()
                         .HasForeignKey("UtilizadorId1");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.MarcacaoDuvidas", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
+                        .WithMany()
+                        .HasForeignKey("AlunoId1");
+
+                    b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
+                        .WithMany()
+                        .HasForeignKey("HoraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
