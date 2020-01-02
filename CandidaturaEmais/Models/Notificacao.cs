@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CandidaturaEmais.Models
 {
+    /// <summary>
+    /// Esta class representa a estrutura de uma notificação.
+    /// A notificação é construída por endereço de email destinatário,
+    /// assunto, mensagem e as horas a que foi criada.
+    /// </summary>
     public class Notificacao
     {
         [Key]
