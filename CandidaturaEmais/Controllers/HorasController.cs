@@ -139,6 +139,7 @@ namespace CandidaturaEmais.Controllers
             }
 
             var hora = await _context.Hora
+                .Include(m => m.Utilizador)
                 .FirstOrDefaultAsync(m => m.HoraId == id);
             if (hora == null)
             {
