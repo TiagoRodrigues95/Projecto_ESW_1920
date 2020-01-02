@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CandidaturaEmais.Models.Notificacao>
+
+@{
+    ViewData["Title"] = "Notificações";
+
+    ViewData["Details"] = "Detalhes";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Para)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assunto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mensagem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Timestamp)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Para)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assunto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mensagem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.NotificacaoId">
+                        <img class="icon-action-table" src="~/img/iconfinder_document_sticker_68525.png" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
