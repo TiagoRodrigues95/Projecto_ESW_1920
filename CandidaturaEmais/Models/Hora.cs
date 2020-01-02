@@ -13,7 +13,7 @@ namespace CandidaturaEmais.Models
     /// </summary>
     public class Hora
     {
-        /// <value>ID</value>
+        /// <value>Primary Key - ID</value>
         [Key]
         public int HoraId { get; set; }
 

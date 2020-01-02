@@ -10,7 +10,7 @@ namespace CandidaturaEmais.Models
     /// </summary>
     public class Notificacao
     {
-        /// <value>ID</value>
+        /// <value>Primary Key - ID</value>
         [Key]
         public int NotificacaoId { get; set; }
 
