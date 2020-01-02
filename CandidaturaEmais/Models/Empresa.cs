@@ -27,7 +27,7 @@ namespace CandidaturaEmais.Models
 
         /// <value>Contato telefónico</value>
         [Display(Name = "Número de Contato")]
-        [StringLength(9, ErrorMessage = "{0} inválido! Necessita de ter 9 digitos!")]
+        [StringLength(9, ErrorMessage = "{0} inválido! Necessita de ter {1} digitos!")]
         public string Contacto { get; set; }
 
         /// <value>Endereço de email</value>
