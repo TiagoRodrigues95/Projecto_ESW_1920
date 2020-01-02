@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CandidaturaEmais.Models
 {
@@ -29,9 +30,10 @@ namespace CandidaturaEmais.Models
         public DateTime HoraFim { get; set; }
 
         /// <value>ForeignKey - ID Utilizador a que pertence a hora</value>
+        [ForeignKey("UtilizadorFk")]
         [Display(Name = "Docente")]
         [Required(ErrorMessage = "{0} é obrigatório!")]
-        public int UtilizadorId { get; set; }
+        public string UtilizadorId { get; set; }
 
         // prop. navegação
         public Utilizador Utilizador { get; set; }
