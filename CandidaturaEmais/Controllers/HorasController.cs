@@ -34,6 +34,7 @@ namespace CandidaturaEmais.Controllers
             }
 
             var hora = await _context.Hora
+                .Include(m => m.UtilizadorId)
                 .FirstOrDefaultAsync(m => m.HoraId == id);
             if (hora == null)
             {
@@ -46,6 +47,8 @@ namespace CandidaturaEmais.Controllers
         // GET: Horas/Create
         public IActionResult Create()
         {
+            ViewData["UtilizadorId"] = new SelectList(_context.Users, "Id", "Nome");
+
             return View();
         }
 
@@ -62,6 +65,9 @@ namespace CandidaturaEmais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["UtilizadorId"] = new SelectList(_context.Users, "Id", "Nome", hora.UtilizadorId);
+
             return View(hora);
         }
 
@@ -78,6 +84,9 @@ namespace CandidaturaEmais.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["UtilizadorId"] = new SelectList(_context.Users, "Id", "Nome", hora.UtilizadorId);
+
             return View(hora);
         }
 
@@ -113,6 +122,9 @@ namespace CandidaturaEmais.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            ViewData["UtilizadorId"] = new SelectList(_context.Users, "Id", "Nome", hora.UtilizadorId);
+
             return View(hora);
         }
 
@@ -130,6 +142,8 @@ namespace CandidaturaEmais.Controllers
             {
                 return NotFound();
             }
+
+            ViewData["UtilizadorId"] = new SelectList(_context.Users, "Id", "Nome", hora.UtilizadorId);
 
             return View(hora);
         }

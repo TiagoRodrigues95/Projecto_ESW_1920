@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="UtilizadorId" class="control-label"></label>
-                <input asp-for="UtilizadorId" class="form-control" />
+                <select asp-for="UtilizadorId" class="form-control" asp-items="ViewBag.UtilizadorId"></select>
                 <span asp-validation-for="UtilizadorId" class="text-danger"></span>
             </div>
             <div class="form-group">

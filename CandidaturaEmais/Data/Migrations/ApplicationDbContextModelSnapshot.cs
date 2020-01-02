@@ -351,19 +351,6 @@ namespace CandidaturaEmais.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CandidaturaEmais.Models.MarcacaoDuvidas", b =>
-                {
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
-                        .WithMany()
-                        .HasForeignKey("AlunoId1");
-
-                    b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
-                        .WithMany()
-                        .HasForeignKey("HoraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)

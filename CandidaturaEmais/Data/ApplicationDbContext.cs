@@ -16,11 +16,11 @@ namespace CandidaturaEmais.Data
 
         public DbSet<Notificacao> Notificacao { get; set; }
 
-        public DbSet<CandidaturaEmais.Models.Hora> Hora { get; set; }
+        public DbSet<Hora> Hora { get; set; }
 
-        public DbSet<CandidaturaEmais.Models.Inquerito> Inquerito { get; set; }
+        public DbSet<Inquerito> Inquerito { get; set; }
 
-        public DbSet<CandidaturaEmais.Models.MarcacaoDuvidas> MarcacaoDuvidas { get; set; }
+        public DbSet<MarcacaoDuvidas> MarcacaoDuvidas { get; set; }
 
 
     }

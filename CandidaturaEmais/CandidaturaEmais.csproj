@@ -5,6 +5,15 @@
     <UserSecretsId>aspnet-CandidaturaEmais-12F90F5A-D47A-4DA9-8A12-965CBD04623F</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200102195822_marcacao_duvida.cs" />
+    <Compile Remove="Data\Migrations\20200102195822_marcacao_duvida.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200102200240_add_marcacao_duvidas.cs" />
+    <Compile Remove="Data\Migrations\20200102200240_add_marcacao_duvidas.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200102200735_add_inquerito.cs" />
+    <Compile Remove="Data\Migrations\20200102200735_add_inquerito.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.0" />
