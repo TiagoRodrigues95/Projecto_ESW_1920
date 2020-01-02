@@ -16,6 +16,8 @@ namespace CandidaturaEmais.Data
 
         public DbSet<Notificacao> Notificacao { get; set; }
 
+        public DbSet<CandidaturaEmais.Models.Hora> Hora { get; set; }
+
 
     }
 }
