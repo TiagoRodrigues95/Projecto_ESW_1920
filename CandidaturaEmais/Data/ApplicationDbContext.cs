@@ -18,7 +18,7 @@ namespace CandidaturaEmais.Data
 
         public DbSet<Hora> Hora { get; set; }
 
-        public DbSet<Inquerito> Inquerito { get; set; }
+        public DbSet<Inquerito> Inquerito { get; set; }
 
         public DbSet<MarcacaoDuvidas> MarcacaoDuvidas { get; set; }
 
