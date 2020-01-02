@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CandidaturaEmais.Models
 {
@@ -7,17 +8,26 @@ namespace CandidaturaEmais.Models
         [Key]
         public int TutorId { get; set; }
 
-        [Required]
-         public string Nome { get; set; }
+        [Display(Name = "Nome da Empresa")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [StringLength(255, MinimumLength = 4, ErrorMessage = "{0} não pode ser superior a {1} digitos ou inferior a {2}!")]
 
+        public string Nome { get; set; }
+
+        [Display(Name = "Número de Contato")]
+        [StringLength(9, ErrorMessage = "{0} inválido! Necessita de ter {1} digitos!")]
         public string Contacto { get; set; }
 
-        [Required]
+        [Display(Name = "Email")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
+        [EmailAddress(ErrorMessage = "{0} inválido!")]
         public string Email { get; set; }
 
         // fk
-        [Required]
-        public int Empresa_Id { get; set; }
+        [ForeignKey("EmpresaFk")]
+        [Display(Name = "Empresa")]
+        [Required(ErrorMessage = "{0} é obrigatório")]
+        public int EmpresaId { get; set; }
 
         // prop Navegacional
         public Empresa Empresa { get; set; }
