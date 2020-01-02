@@ -10,7 +10,7 @@ namespace CandidaturaEmais.Models
     /// </summary>
     public class Notificacao
     {
-        /// <value>Retorna o ID</value>
+        /// <value>ID</value>
         [Key]
         public int NotificacaoId { get; set; }
 
