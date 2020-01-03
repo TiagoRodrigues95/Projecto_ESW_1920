@@ -13,5 +13,6 @@ namespace CandidaturaEmais.Data
             : base(options)
         {
         }
+        public DbSet<CandidaturaEmais.Models.Inquerito> Inquerito { get; set; }
     }
 }
