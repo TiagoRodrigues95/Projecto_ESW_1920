@@ -14,5 +14,6 @@ namespace CandidaturaEmais.Data
         {
         }
         public DbSet<CandidaturaEmais.Models.Inquerito> Inquerito { get; set; }
+        public DbSet<CandidaturaEmais.Models.InqueritoResposta> InqueritoResposta { get; set; }
     }
 }

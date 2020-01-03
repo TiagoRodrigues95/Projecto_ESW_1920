@@ -1,4 +1,4 @@
-﻿@model CandidaturaEmais.Models.Inquerito
+﻿@model CandidaturaEmais.Models.InqueritoResposta
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,13 +6,18 @@
 
 <h1>Edit</h1>
 
-<h4>Inquerito</h4>
+<h4>InqueritoResposta</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="InqueritoId" />
+            <input type="hidden" asp-for="InqueritoRespostaId" />
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="AnoLetivo" class="control-label"></label>
                 <input asp-for="AnoLetivo" class="form-control" />
@@ -22,6 +27,16 @@
                 <label asp-for="Url" class="control-label"></label>
                 <input asp-for="Url" class="form-control" />
                 <span asp-validation-for="Url" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InqueritoId" class="control-label"></label>
+                <select asp-for="InqueritoId" class="form-control" asp-items="ViewBag.InqueritoId"></select>
+                <span asp-validation-for="InqueritoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlunoId" class="control-label"></label>
+                <select asp-for="AlunoId" class="form-control" asp-items="ViewBag.AlunoId"></select>
+                <span asp-validation-for="AlunoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
