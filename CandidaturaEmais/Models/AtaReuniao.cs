@@ -5,7 +5,7 @@ namespace CandidaturaEmais.Models
 {
     /// <summary>
     /// Esta classe representa uma ata de reunião.
-    /// A ata de reunião é constituída por título, descrição, a data e hora.
+    /// A ata de reunião é constituída por título, descrição, data e hora.
     /// </summary>
     public class AtaReuniao
     {
