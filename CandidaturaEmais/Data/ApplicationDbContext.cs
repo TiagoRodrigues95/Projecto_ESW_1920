@@ -20,7 +20,6 @@ namespace CandidaturaEmais.Data
 
         public DbSet<Empresa> Empresa { get; set; }
 
-
         public DbSet<Tutor> Tutor { get; set; }
 
     }
