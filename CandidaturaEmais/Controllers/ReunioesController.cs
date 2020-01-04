@@ -49,8 +49,8 @@ namespace CandidaturaEmais.Controllers
         // GET: Reunioes/Create
         public IActionResult Create()
         {
-            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Descricao");
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId");
+            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo");
+            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace CandidaturaEmais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Descricao", reuniao.AtaId);
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId", reuniao.HoraId);
+            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
+            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
             return View(reuniao);
         }
 
@@ -85,8 +85,10 @@ namespace CandidaturaEmais.Controllers
             {
                 return NotFound();
             }
-            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Descricao", reuniao.AtaId);
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId", reuniao.HoraId);
+            
+            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
+            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
+            
             return View(reuniao);
         }
 
@@ -122,8 +124,10 @@ namespace CandidaturaEmais.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Descricao", reuniao.AtaId);
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId", reuniao.HoraId);
+
+            ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
+            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
+
             return View(reuniao);
         }
 

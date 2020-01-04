@@ -22,12 +22,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="UtilizadorIdParticipante" class="control-label"></label>
-                <input asp-for="UtilizadorIdParticipante" class="form-control" />
-                <span asp-validation-for="UtilizadorIdParticipante" class="text-danger"></span>
+                <p>@ViewBag.UtilizadorIdParticipante</p>
             </div>
             <div class="form-group">
                 <label asp-for="UtilizadorIdConvocado" class="control-label"></label>
-                <input asp-for="UtilizadorIdConvocado" class="form-control" />
+                <select asp-for="AtaId" class="form-control" asp-items="ViewBag.UtilizadorIdConvocado"></select>
                 <span asp-validation-for="UtilizadorIdConvocado" class="text-danger"></span>
             </div>
             <div class="form-group">
