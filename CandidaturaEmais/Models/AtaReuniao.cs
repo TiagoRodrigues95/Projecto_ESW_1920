@@ -16,7 +16,7 @@ namespace CandidaturaEmais.Models
         /// <value>Primary Key - ID</value>
         [Display(Name = "Data-Hora")]
         [Required(ErrorMessage = "{0} é obrigatório!")]
-
+        [DataType(DataType.DateTime)]
         public DateTime Timestamp { get; set; }
 
         /// <value>Título da ata</value>

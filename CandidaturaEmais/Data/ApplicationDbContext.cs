@@ -22,5 +22,7 @@ namespace CandidaturaEmais.Data
 
         public DbSet<Tutor> Tutor { get; set; }
 
+        public DbSet<CandidaturaEmais.Models.AtaReuniao> AtaReuniao { get; set; }
+
     }
 }
