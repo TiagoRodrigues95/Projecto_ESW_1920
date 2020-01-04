@@ -10,8 +10,7 @@ namespace CandidaturaEmais.Models
     /// <summary>
     /// Esta classe representa uma reunião.
     /// A reunião é constituída por incluir hora, ata, utilizador que marcou 
-    /// reunião e utilizador participante. Por norma a ata é adicionada só
-    /// quando passar da hora da reunião.
+    /// reunião e utilizador participante.
     /// </summary>
     public class Reuniao
     {
