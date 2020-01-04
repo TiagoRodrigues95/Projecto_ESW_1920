@@ -16,7 +16,7 @@ namespace CandidaturaEmais.Models
     {
         /// <value>Primary Key - ID</value>
         [Key]
-        public int MarcaReuniaoId { get; set; }
+        public int ReuniaoId { get; set; }
 
         /// <value>ForeignKey - ID Hora atribuída à reunião</value>
         [ForeignKey("HoraFk")]
