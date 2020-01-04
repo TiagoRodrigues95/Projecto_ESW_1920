@@ -24,5 +24,7 @@ namespace CandidaturaEmais.Data
 
         public DbSet<CandidaturaEmais.Models.AtaReuniao> AtaReuniao { get; set; }
 
+        public DbSet<CandidaturaEmais.Models.Reuniao> Reuniao { get; set; }
+
     }
 }

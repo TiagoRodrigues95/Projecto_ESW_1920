@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CandidaturaEmais.Models.Reuniao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UtilizadorIdParticipante)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UtilizadorIdConvocado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ata)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hora)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UtilizadorIdParticipante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UtilizadorIdConvocado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ata.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora.UtilizadorId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReuniaoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReuniaoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReuniaoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
