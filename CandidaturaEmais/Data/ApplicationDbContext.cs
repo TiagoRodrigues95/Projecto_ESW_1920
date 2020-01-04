@@ -18,10 +18,10 @@ namespace CandidaturaEmais.Data
 
         public DbSet<Hora> Hora { get; set; }
 
-        public DbSet<CandidaturaEmais.Models.Empresa> Empresa { get; set; }
+        public DbSet<Empresa> Empresa { get; set; }
 
 
-        public DbSet<CandidaturaEmais.Models.Tutor> Tutor { get; set; }
+        public DbSet<Tutor> Tutor { get; set; }
 
     }
 }
