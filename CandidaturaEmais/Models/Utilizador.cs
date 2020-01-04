@@ -10,8 +10,6 @@ namespace CandidaturaEmais.Models
     public class Utilizador : IdentityUser
     {
 
-        public int UtilizadorId { get; set; }
-
         [PersonalData, Required(ErrorMessage = "O {0} é obrigatório")]
         public string CodigoIPS { get; set; }
 
