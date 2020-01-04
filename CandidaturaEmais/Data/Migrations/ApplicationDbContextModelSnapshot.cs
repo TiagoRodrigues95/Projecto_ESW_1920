@@ -19,6 +19,30 @@ namespace CandidaturaEmais.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CandidaturaEmais.Models.AtaReuniao", b =>
+                {
+                    b.Property<int>("AtaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("AtaId");
+
+                    b.ToTable("AtaReuniao");
+                });
+
             modelBuilder.Entity("CandidaturaEmais.Models.Empresa", b =>
                 {
                     b.Property<int>("EmpresaId")
@@ -71,52 +95,6 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasIndex("UtilizadorId");
 
                     b.ToTable("Hora");
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.Inquerito", b =>
-                {
-                    b.Property<int>("InqueritoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AnoLetivo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("InqueritoId");
-
-                    b.ToTable("Inquerito");
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.MarcacaoDuvidas", b =>
-                {
-                    b.Property<int>("MD_Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AlunoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AlunoId1")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("HoraId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MD_Id");
-
-                    b.HasIndex("AlunoId1");
-
-                    b.HasIndex("HoraId");
-
-                    b.ToTable("MarcacaoDuvidas");
                 });
 
             modelBuilder.Entity("CandidaturaEmais.Models.Notificacao", b =>
@@ -394,19 +372,6 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasOne("CandidaturaEmais.Models.Utilizador", "Utilizador")
                         .WithMany("Horas")
                         .HasForeignKey("UtilizadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.MarcacaoDuvidas", b =>
-                {
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
-                        .WithMany()
-                        .HasForeignKey("AlunoId1");
-
-                    b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
-                        .WithMany()
-                        .HasForeignKey("HoraId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
