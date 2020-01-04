@@ -24,5 +24,10 @@ namespace CandidaturaEmais.Models
         public Inquerito Inquerito { get; set; }
 
         public Utilizador Aluno { get; set; }
+
+        public InqueritoResposta()
+        {
+            this.Data = DateTime.UtcNow;
+        }
     }
 }

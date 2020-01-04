@@ -25,9 +25,14 @@ namespace CandidaturaEmais.Models
         [Display(Name = "Aluno")]
         [Required(ErrorMessage = "{0} é obrigatório!")]
         public string AlunoId{ get; set; }
+
         //Prop Navegacional
         public Utilizador Aluno { get; set; }
         public Utilizador Docente { get; set; }
 
+        public PFC()
+        {
+            this.Timestamp = DateTime.UtcNow;
+        }
     }
 }
