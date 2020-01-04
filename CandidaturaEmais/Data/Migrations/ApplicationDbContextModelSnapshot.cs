@@ -126,6 +126,46 @@ namespace CandidaturaEmais.Data.Migrations
                     b.ToTable("Notificacao");
                 });
 
+            modelBuilder.Entity("CandidaturaEmais.Models.Reuniao", b =>
+                {
+                    b.Property<int>("ReuniaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AtaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HoraId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorConvocadoId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UtilizadorIdConvocado")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UtilizadorIdParticipante")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UtilizadorParticipanteId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ReuniaoId");
+
+                    b.HasIndex("AtaId");
+
+                    b.HasIndex("HoraId");
+
+                    b.HasIndex("UtilizadorConvocadoId");
+
+                    b.HasIndex("UtilizadorParticipanteId");
+
+                    b.ToTable("Reuniao");
+                });
+
             modelBuilder.Entity("CandidaturaEmais.Models.Tutor", b =>
                 {
                     b.Property<int>("TutorId")
@@ -374,6 +414,29 @@ namespace CandidaturaEmais.Data.Migrations
                         .HasForeignKey("UtilizadorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Reuniao", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.AtaReuniao", "Ata")
+                        .WithMany()
+                        .HasForeignKey("AtaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
+                        .WithMany()
+                        .HasForeignKey("HoraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "UtilizadorConvocado")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorConvocadoId");
+
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "UtilizadorParticipante")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorParticipanteId");
                 });
 
             modelBuilder.Entity("CandidaturaEmais.Models.Tutor", b =>
