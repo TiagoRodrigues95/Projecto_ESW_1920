@@ -22,7 +22,10 @@ namespace CandidaturaEmais.Controllers
         // GET: Reunioes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Reuniao.Include(r => r.Ata).Include(r => r.Hora);
+            var applicationDbContext = _context.Reuniao
+                .Include(r => r.Ata)
+                .Include(r => r.Hora);
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -49,8 +52,14 @@ namespace CandidaturaEmais.Controllers
         // GET: Reunioes/Create
         public IActionResult Create()
         {
+            var UtilizadorParticipante = _context.Users.Where(m => m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorConvocado = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+
             ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo");
             ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio");
+            ViewData["UtilizadorIdParticipante"] = new SelectList(UtilizadorParticipante, "Id", "Nome");
+            ViewData["UtilizadorIdConvocado"] = new SelectList(UtilizadorConvocado, "Id", "Nome");
+
             return View();
         }
 
@@ -67,8 +76,15 @@ namespace CandidaturaEmais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            var UtilizadorParticipante = _context.Users.Where(m => m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorConvocado = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+
             ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
             ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
+            ViewData["UtilizadorIdParticipante"] = new SelectList(UtilizadorParticipante, "Id", "Nome", reuniao.UtilizadorIdParticipante);
+            ViewData["UtilizadorIdConvocado"] = new SelectList(UtilizadorConvocado, "Id", "Nome", reuniao.UtilizadorIdConvocado);
+
             return View(reuniao);
         }
 
@@ -85,10 +101,15 @@ namespace CandidaturaEmais.Controllers
             {
                 return NotFound();
             }
-            
+
+            var UtilizadorParticipante = _context.Users.Where(m => m.UserName == User.Identity.Name).ToArray();
+            var UtilizadorConvocado = _context.Users.Where(m => m.UserName != User.Identity.Name).ToArray();
+
             ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
             ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
-            
+            ViewData["UtilizadorIdParticipante"] = new SelectList(UtilizadorParticipante, "Id", "Nome", reuniao.UtilizadorIdParticipante);
+            ViewData["UtilizadorIdConvocado"] = new SelectList(UtilizadorConvocado, "Id", "Nome", reuniao.UtilizadorIdConvocado);
+
             return View(reuniao);
         }
 
@@ -125,8 +146,13 @@ namespace CandidaturaEmais.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
+            var UtilizadorParticipante = _context.Users.Include(m => m.UserName == User.Identity.Name).ToArray();
+            var UtilizadorConvocado = _context.Users.Include(m => m.UserName != User.Identity.Name).ToArray();
+
             ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
             ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
+            ViewData["UtilizadorIdParticipante"] = new SelectList(UtilizadorParticipante, "Id", "Nome", reuniao.UtilizadorIdParticipante);
+            ViewData["UtilizadorIdConvocado"] = new SelectList(UtilizadorConvocado, "Id", "Nome", reuniao.UtilizadorIdConvocado);
 
             return View(reuniao);
         }
@@ -143,6 +169,7 @@ namespace CandidaturaEmais.Controllers
                 .Include(r => r.Ata)
                 .Include(r => r.Hora)
                 .FirstOrDefaultAsync(m => m.ReuniaoId == id);
+
             if (reuniao == null)
             {
                 return NotFound();
