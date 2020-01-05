@@ -102,8 +102,8 @@ namespace CandidaturaEmais.Controllers
                 return NotFound();
             }
 
-            var UtilizadorParticipante = _context.Users.Where(m => m.UserName == User.Identity.Name).ToArray();
-            var UtilizadorConvocado = _context.Users.Where(m => m.UserName != User.Identity.Name).ToArray();
+            var UtilizadorParticipante = _context.Users.Where(m => m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorConvocado = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
 
             ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
             ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
@@ -146,8 +146,8 @@ namespace CandidaturaEmais.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            var UtilizadorParticipante = _context.Users.Include(m => m.UserName == User.Identity.Name).ToArray();
-            var UtilizadorConvocado = _context.Users.Include(m => m.UserName != User.Identity.Name).ToArray();
+            var UtilizadorParticipante = _context.Users.Where(m => m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorConvocado = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
 
             ViewData["AtaId"] = new SelectList(_context.AtaReuniao, "AtaId", "Titulo", reuniao.AtaId);
             ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio", reuniao.HoraId);
