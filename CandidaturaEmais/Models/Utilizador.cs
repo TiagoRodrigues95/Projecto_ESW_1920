@@ -17,5 +17,9 @@ namespace CandidaturaEmais.Models
         public string Nome { get; set; }
 
         public int Telefone { get; set; }
+
+        /// <value>Propriedade navegacional (one-to-many) - Horas</value>
+        public List<Hora> Horas { get; set; }
+
     }
 }

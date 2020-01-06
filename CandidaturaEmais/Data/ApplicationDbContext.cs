@@ -13,6 +13,19 @@ namespace CandidaturaEmais.Data
             : base(options)
         {
         }
+
+        public DbSet<Notificacao> Notificacao { get; set; }
+
+        public DbSet<Hora> Hora { get; set; }
+
+        public DbSet<Empresa> Empresa { get; set; }
+
+        public DbSet<Tutor> Tutor { get; set; }
+
+        public DbSet<CandidaturaEmais.Models.AtaReuniao> AtaReuniao { get; set; }
+
+        public DbSet<CandidaturaEmais.Models.Reuniao> Reuniao { get; set; }
+
         public DbSet<CandidaturaEmais.Models.Inquerito> Inquerito { get; set; }
         public DbSet<CandidaturaEmais.Models.InqueritoResposta> InqueritoResposta { get; set; }
         public DbSet<CandidaturaEmais.Models.PFC> PFC { get; set; }

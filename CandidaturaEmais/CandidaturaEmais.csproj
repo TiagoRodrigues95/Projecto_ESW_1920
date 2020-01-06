@@ -8,6 +8,14 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200104212749_add_pfc_2.cs" />
     <Compile Remove="Data\Migrations\20200104212749_add_pfc_2.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200102195822_marcacao_duvida.cs" />
+    <Compile Remove="Data\Migrations\20200102195822_marcacao_duvida.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200102200240_add_marcacao_duvidas.cs" />
+    <Compile Remove="Data\Migrations\20200102200240_add_marcacao_duvidas.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200102200735_add_inquerito.cs" />
+    <Compile Remove="Data\Migrations\20200102200735_add_inquerito.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200102220204_add_navegational_properties.cs" />
+    <Compile Remove="Data\Migrations\20200102220204_add_navegational_properties.Designer.cs" />
   </ItemGroup>
 
 

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CandidaturaEmais.Models.Tutor>
+
+@{
+    ViewData["Title"] = "Tutores";
+
+    ViewData["Create"] = "Novo Tutor";
+    ViewData["Edit"] = "Alterar";
+    ViewData["Details"] = "Detalhes";
+    ViewData["Delete"] = "Eliminar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">
+        <img src="~/img/iconfinder_button-add_sticker_68486.png" />
+        @ViewData["Create"]
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contacto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Empresa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Nome)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TutorId">
+                        <img class="icon-action-table" src="~/img/iconfinder_pencil_sticker_68596.png" />
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.TutorId">
+                        <img class="icon-action-table" src="~/img/iconfinder_document_sticker_68525.png" />
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.TutorId">
+                        <img class="icon-action-table" src="~/img/iconfinder_bin_sticker_68480.png" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

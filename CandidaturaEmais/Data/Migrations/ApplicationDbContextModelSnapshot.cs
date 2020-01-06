@@ -19,86 +19,181 @@ namespace CandidaturaEmais.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CandidaturaEmais.Models.Inquerito", b =>
+            modelBuilder.Entity("CandidaturaEmais.Models.AtaReuniao", b =>
                 {
-                    b.Property<int>("InqueritoId")
+                    b.Property<int>("AtaId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AnoLetivo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("InqueritoId");
-
-                    b.ToTable("Inquerito");
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.InqueritoResposta", b =>
-                {
-                    b.Property<int>("InqueritoRespostaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AlunoId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AnoLetivo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("InqueritoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("InqueritoRespostaId");
-
-                    b.HasIndex("AlunoId");
-
-                    b.HasIndex("InqueritoId");
-
-                    b.ToTable("InqueritoResposta");
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.PFC", b =>
-                {
-                    b.Property<int>("PFCId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AlunoId")
+                    b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("DocenteId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("PropostaUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("PFCId");
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
 
-                    b.HasIndex("AlunoId");
+                    b.HasKey("AtaId");
 
-                    b.HasIndex("DocenteId");
+                    b.ToTable("AtaReuniao");
+                });
 
-                    b.ToTable("PFC");
+            modelBuilder.Entity("CandidaturaEmais.Models.Empresa", b =>
+                {
+                    b.Property<int>("EmpresaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contacto")
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Representante")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EmpresaId");
+
+                    b.ToTable("Empresa");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Hora", b =>
+                {
+                    b.Property<int>("HoraId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("HoraFim")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HoraInicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UtilizadorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("HoraId");
+
+                    b.HasIndex("UtilizadorId");
+
+                    b.ToTable("Hora");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Notificacao", b =>
+                {
+                    b.Property<int>("NotificacaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Assunto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Mensagem")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.Property<string>("Para")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("NotificacaoId");
+
+                    b.ToTable("Notificacao");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Reuniao", b =>
+                {
+                    b.Property<int>("ReuniaoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AtaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HoraId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UtilizadorConvocadoId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UtilizadorIdConvocado")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UtilizadorIdParticipante")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UtilizadorParticipanteId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("ReuniaoId");
+
+                    b.HasIndex("AtaId");
+
+                    b.HasIndex("HoraId");
+
+                    b.HasIndex("UtilizadorConvocadoId");
+
+                    b.HasIndex("UtilizadorParticipanteId");
+
+                    b.ToTable("Reuniao");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Tutor", b =>
+                {
+                    b.Property<int>("TutorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contacto")
+                        .HasColumnType("nvarchar(9)")
+                        .HasMaxLength(9);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(255)")
+                        .HasMaxLength(255);
+
+                    b.HasKey("TutorId");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Tutor");
                 });
 
             modelBuilder.Entity("CandidaturaEmais.Models.Utilizador", b =>
@@ -312,30 +407,43 @@ namespace CandidaturaEmais.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CandidaturaEmais.Models.InqueritoResposta", b =>
+            modelBuilder.Entity("CandidaturaEmais.Models.Hora", b =>
                 {
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
-                        .WithMany()
-                        .HasForeignKey("AlunoId");
-
-                    b.HasOne("CandidaturaEmais.Models.Inquerito", "Inquerito")
-                        .WithMany()
-                        .HasForeignKey("InqueritoId")
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Utilizador")
+                        .WithMany("Horas")
+                        .HasForeignKey("UtilizadorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CandidaturaEmais.Models.PFC", b =>
+            modelBuilder.Entity("CandidaturaEmais.Models.Reuniao", b =>
                 {
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
+                    b.HasOne("CandidaturaEmais.Models.AtaReuniao", "Ata")
                         .WithMany()
-                        .HasForeignKey("AlunoId")
+                        .HasForeignKey("AtaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Docente")
+                    b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
                         .WithMany()
-                        .HasForeignKey("DocenteId")
+                        .HasForeignKey("HoraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "UtilizadorConvocado")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorConvocadoId");
+
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "UtilizadorParticipante")
+                        .WithMany()
+                        .HasForeignKey("UtilizadorParticipanteId");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.Tutor", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.Empresa", "Empresa")
+                        .WithMany("Tutores")
+                        .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -390,7 +498,115 @@ namespace CandidaturaEmais.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
-#pragma warning restore 612, 618
+            modelBuilder.Entity("CandidaturaEmais.Models.Inquerito", b =>
+                {
+                    b.Property<int>("InqueritoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AnoLetivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InqueritoId");
+
+                    b.ToTable("Inquerito");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.InqueritoResposta", b =>
+                {
+                    b.Property<int>("InqueritoRespostaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlunoId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AnoLetivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InqueritoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("InqueritoRespostaId");
+
+                    b.HasIndex("AlunoId");
+
+                    b.HasIndex("InqueritoId");
+
+                    b.ToTable("InqueritoResposta");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.PFC", b =>
+                {
+                    b.Property<int>("PFCId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlunoId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DocenteId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("PropostaUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("PFCId");
+
+                    b.HasIndex("AlunoId");
+
+                    b.HasIndex("DocenteId");
+
+                    b.ToTable("PFC");
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.InqueritoResposta", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
+                        .WithMany()
+                        .HasForeignKey("AlunoId");
+
+                    b.HasOne("CandidaturaEmais.Models.Inquerito", "Inquerito")
+                        .WithMany()
+                        .HasForeignKey("InqueritoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CandidaturaEmais.Models.PFC", b =>
+                {
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
+                        .WithMany()
+                        .HasForeignKey("AlunoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Docente")
+                        .WithMany()
+                        .HasForeignKey("DocenteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
         }
     }
 }

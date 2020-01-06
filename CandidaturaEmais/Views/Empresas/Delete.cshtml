@@ -1,0 +1,51 @@
+﻿@model CandidaturaEmais.Models.Empresa
+
+@{
+    ViewData["Title"] = "Eliminar";
+    ViewData["Subtitle"] = "Empresa";
+
+    ViewData["Delete"] = "Eliminar";
+
+    ViewData["Go Back"] = "Voltar";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h2>Tem a certeza que quer eliminar esta empresa?</h2>
+<!-- <p>Após eliminar perderá para sempre esta empresa e tudo o que lhe esteja relacionado.</p> -->
+<div>
+    <h4>@ViewData["Subtitle"]</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Representante)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Representante)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Contacto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Contacto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.email)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EmpresaId" />
+        <input type="submit" value="@ViewData["Delete"]" class="btn btn-danger" /> |
+        <a asp-action="Index">@ViewData["Go Back"]</a>
+    </form>
+</div>
