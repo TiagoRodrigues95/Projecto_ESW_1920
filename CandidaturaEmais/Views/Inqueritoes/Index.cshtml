@@ -1,13 +1,21 @@
 ﻿@model IEnumerable<CandidaturaEmais.Models.Inquerito>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Inquéritos";
+
+    ViewData["Create"] = "Novo Inquérito";
+    ViewData["Edit"] = "Alterar";
+    ViewData["Details"] = "Detalhes";
+    ViewData["Delete"] = "Eliminar";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">
+        <img src="~/img/iconfinder_button-add_sticker_68486.png" />
+        @ViewData["Create"]
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -37,9 +45,15 @@
                 @Html.DisplayFor(modelItem => item.Url)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.InqueritoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.InqueritoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.InqueritoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.InqueritoId">
+                    <img class="icon-action-table" src="~/img/iconfinder_pencil_sticker_68596.png" />
+                </a> |
+                <a asp-action="Details" asp-route-id="@item.InqueritoId">
+                    <img class="icon-action-table" src="~/img/iconfinder_document_sticker_68525.png" />
+                </a> |
+                <a asp-action="Delete" asp-route-id="@item.InqueritoId">
+                    <img class="icon-action-table" src="~/img/iconfinder_bin_sticker_68480.png" />
+                </a>
             </td>
         </tr>
 }

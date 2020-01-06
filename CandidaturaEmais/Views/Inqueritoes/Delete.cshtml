@@ -1,14 +1,19 @@
 ﻿@model CandidaturaEmais.Models.Inquerito
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar";
+    ViewData["Subtitle"] = "Inquérito";
+
+    ViewData["Delete"] = "Eliminar";
+
+    ViewData["Go Back"] = "Voltar";
 }
 
-<h1>Delete</h1>
+<h1>@ViewData["Title"]</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Inquerito</h4>
+    <h4>@ViewData["Subtitle"]</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -33,7 +38,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="InqueritoId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="@ViewData["Delete"]" class="btn btn-danger" /> |
+        <a asp-action="Index">@ViewData["Go Back"]</a>
     </form>
 </div>
