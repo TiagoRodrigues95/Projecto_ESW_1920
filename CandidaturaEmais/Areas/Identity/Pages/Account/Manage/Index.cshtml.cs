@@ -33,31 +33,20 @@ namespace CandidaturaEmais.Areas.Identity.Pages.Account.Manage
 
         public class InputModel
         {
-            //[Phone]
-            //[Display(Name = "Phone number")]
-            //public string PhoneNumber { get; set; }
-
             [Required]
             [DataType(DataType.Text)]
-            public string Nome;
-
-            [Required]
-            [Display(Name = "Número IPS")]
-            public string CodigoIPS;
-
+            public string Nome { get; set; }
         }
 
         private async Task LoadAsync(Utilizador user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
-            //var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
             Username = userName;
 
             Input = new InputModel
             {
-                Nome = user.Nome,
-                //CodigoIPS = user.CodigoIPS
+                Nome = user.Nome
             };
         }
 
