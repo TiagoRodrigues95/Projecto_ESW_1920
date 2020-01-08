@@ -7,7 +7,7 @@ namespace CandidaturaEmais.Models
 {
     public class MarcacaoReuniao
     {
-        public int MR_Id { get; set; }
+        public int MRId { get; set; }
 
         //FK
         public int HoraId { get; set; }

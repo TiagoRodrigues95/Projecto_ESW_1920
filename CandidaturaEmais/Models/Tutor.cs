@@ -14,7 +14,7 @@ namespace CandidaturaEmais.Models
         public string Contacto { get; set; }
         
         //FK
-        public int Empresa_Id { get; set; }
+        public int EmpresaId { get; set; }
 
         //Prop Navegacional
         public Empresa Empresa { get; set; }
