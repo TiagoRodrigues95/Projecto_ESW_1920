@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CandidaturaEmais.Data;
 using CandidaturaEmais.Models;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace CandidaturaEmais.Controllers
 {
@@ -22,8 +24,63 @@ namespace CandidaturaEmais.Controllers
         // GET: PFCs
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.PFC.Include(p => p.Aluno).Include(p => p.Docente);
+            var applicationDbContext = _context.PFC.Include(p => p.Docente).Include(p => p.Aluno);
             return View(await applicationDbContext.ToListAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Index(IFormFile postedFile)
+        {
+            if (postedFile != null)
+            {
+                try
+                {
+                    string fileExtension = Path.GetExtension(postedFile.FileName);
+
+                    //Validate uploaded file and return error.
+                    if (fileExtension != ".csv")
+                    {
+                        ViewBag.Message = "Please select the csv file with .csv extension";
+                        return View();
+                    }
+
+
+                    var pfc = new List<PFC>();
+                    using (var sreader = new StreamReader(postedFile.OpenReadStream()))
+                    {
+                        //First line is header. If header is not passed in csv then we can neglect the below line.
+                        string[] headers = sreader.ReadLine().Split(';');
+                        //Loop through the records
+                        while (!sreader.EndOfStream)
+                        {
+                            string[] rows = sreader.ReadLine().Split(';');
+
+                            pfc.Add(new PFC
+                            {
+                                PFCId = int.Parse(rows[0].ToString()),
+                                Timestamp = DateTime.Parse(rows[1].ToString()),
+                                PropostaUrl = rows[2].ToString(),
+                                DocenteId = rows[3].ToString(),
+                                AlunoId = rows[3].ToString()
+                            });
+                        }
+                    }
+
+                    
+                    return RedirectToAction("Index", pfc);
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = ex.Message;
+                }
+            }
+            else
+            {
+                ViewBag.Message = "Please select the file first to upload.";
+            }
+            return View("Index");
         }
 
         // GET: PFCs/Details/5
@@ -49,8 +106,12 @@ namespace CandidaturaEmais.Controllers
         // GET: PFCs/Create
         public IActionResult Create()
         {
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["DocenteId"] = new SelectList(_context.Users, "Id", "Id");
+            var UtilizadorDocente = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorAluno = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+
+            ViewData["DocenteId"] = new SelectList(UtilizadorDocente, "Id", "Nome");
+            ViewData["AlunoId"] = new SelectList(UtilizadorAluno, "Id", "Nome");
+
             return View();
         }
 
@@ -67,8 +128,13 @@ namespace CandidaturaEmais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id", pFC.AlunoId);
-            ViewData["DocenteId"] = new SelectList(_context.Users, "Id", "Id", pFC.DocenteId);
+
+            var UtilizadorDocente = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorAluno = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+
+            ViewData["DocenteId"] = new SelectList(UtilizadorDocente, "Id", "Nome", pFC.DocenteId);
+            ViewData["AlunoId"] = new SelectList(UtilizadorAluno, "Id", "Nome", pFC.AlunoId);
+
             return View(pFC);
         }
 
@@ -85,8 +151,13 @@ namespace CandidaturaEmais.Controllers
             {
                 return NotFound();
             }
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id", pFC.AlunoId);
-            ViewData["DocenteId"] = new SelectList(_context.Users, "Id", "Id", pFC.DocenteId);
+
+            var UtilizadorDocente = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorAluno = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+
+            ViewData["DocenteId"] = new SelectList(UtilizadorDocente, "Id", "Nome", pFC.DocenteId);
+            ViewData["AlunoId"] = new SelectList(UtilizadorAluno, "Id", "Nome", pFC.AlunoId);
+
             return View(pFC);
         }
 
@@ -122,8 +193,13 @@ namespace CandidaturaEmais.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id", pFC.AlunoId);
-            ViewData["DocenteId"] = new SelectList(_context.Users, "Id", "Id", pFC.DocenteId);
+
+            var UtilizadorDocente = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+            var UtilizadorAluno = _context.Users.Where(m => !m.UserName.Equals(User.Identity.Name)).ToArray();
+            
+            ViewData["DocenteId"] = new SelectList(UtilizadorDocente, "Id", "Nome", pFC.DocenteId);
+            ViewData["AlunoId"] = new SelectList(UtilizadorAluno, "Id", "Nome", pFC.AlunoId);
+            
             return View(pFC);
         }
 

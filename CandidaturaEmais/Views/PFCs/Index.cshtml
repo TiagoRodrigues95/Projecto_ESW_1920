@@ -1,14 +1,61 @@
 ﻿@model IEnumerable<CandidaturaEmais.Models.PFC>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "PFC";
+
+    ViewData["Create"] = "Novo PFC";
+    ViewData["Edit"] = "Alterar";
+    ViewData["Details"] = "Detalhes";
+    ViewData["Delete"] = "Eliminar";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">
+        <img src="~/img/iconfinder_button-add_sticker_68486.png" />
+        @ViewData["Create"]
+    </a>
 </p>
+
+<p>
+    <div class="container">
+        <div class="row">
+            <button class="btn btn-primary" data-target="#fileupload" data-toggle="modal"> Importar PFCs </button>
+            <div class="modal" id="fileupload" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <label> Importar PFCs</label>
+                        </div>
+                            <form asp-controller="PFCs" asp-action="UploadSmallFile" enctype="multipart/form-data" id="BlobUploadForm" method="post" class="form-label-left" role="form">
+                                <div class="modal-footer">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-btn">
+                                                <span class="btn btn-primary">
+                                                    Browse… <input type="file" style="display: none;" name="file" id="FileInput">
+                                                </span>
+                                            </label>
+                                            <input type="text" class="form-control" readonly="" id="BrowseInput">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <button type="submit" value="Upload Small File" class="btn btn-default" id="UploadSmallFile">Upload Small File</button>
+                                            <button type="button" value="Upload Streaming File" class="btn btn-default" id="UploadStreamingFile" onclick="uploadStreamingFile()">Upload Streaming File</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -19,35 +66,52 @@
                 @Html.DisplayNameFor(model => model.PropostaUrl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Docente)
+                @Html.DisplayNameFor(model => model.Aluno)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Aluno)
+                @Html.DisplayNameFor(model => model.Docente)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Timestamp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PropostaUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Docente.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Aluno.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PFCId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PFCId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PFCId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Timestamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropostaUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aluno.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Docente.Id)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PFCId">
+                        <img class="icon-action-table" src="~/img/iconfinder_pencil_sticker_68596.png" />
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.PFCId">
+                        <img class="icon-action-table" src="~/img/iconfinder_document_sticker_68525.png" />
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.PFCId">
+                        <img class="icon-action-table" src="~/img/iconfinder_bin_sticker_68480.png" />
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<!-- necessitas desta section Scripts -->
+@section Scripts {
+    <script type="text/javascript">
+        $(document).on('change', ':file', function () {
+            var input = $(this)
+            var label = $('#BrowseInput').val(input.val().replace(/\\/g, '/').replace(/.*\//, ''));
+        });
+    </script>
+}
