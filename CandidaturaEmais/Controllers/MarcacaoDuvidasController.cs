@@ -49,8 +49,8 @@ namespace CandidaturaEmais.Controllers
         // GET: MarcacaoDuvidas/Create
         public IActionResult Create()
         {
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId");
+            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Nome");
+            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "HoraInicio" + "HoraFim");
             return View();
         }
 
@@ -67,8 +67,10 @@ namespace CandidaturaEmais.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id", marcacaoDuvidas.AlunoId);
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId", marcacaoDuvidas.HoraId);
+            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Nome", marcacaoDuvidas.AlunoId);
+            ViewData["HoraId"] = new SelectList((from l in _context.Hora.ToList()
+                                                 select new { hour = l.HoraInicio + "|" + l.HoraFim }),
+                                                "hour", "hour");
             return View(marcacaoDuvidas);
         }
 
@@ -85,8 +87,10 @@ namespace CandidaturaEmais.Controllers
             {
                 return NotFound();
             }
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id", marcacaoDuvidas.AlunoId);
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId", marcacaoDuvidas.HoraId);
+            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Nome", marcacaoDuvidas.AlunoId);
+            ViewData["HoraId"] = new SelectList((from l in _context.Hora.ToList()
+                                                 select new { hour = l.HoraInicio + "|" + l.HoraFim }),
+                                                "hour", "hour");
             return View(marcacaoDuvidas);
         }
 
@@ -122,8 +126,10 @@ namespace CandidaturaEmais.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Id", marcacaoDuvidas.AlunoId);
-            ViewData["HoraId"] = new SelectList(_context.Hora, "HoraId", "UtilizadorId", marcacaoDuvidas.HoraId);
+            ViewData["AlunoId"] = new SelectList(_context.Users, "Id", "Nome", marcacaoDuvidas.AlunoId);
+            ViewData["HoraId"] = new SelectList((from l in _context.Hora.ToList()
+                                                 select new { hour = l.HoraInicio + "|" + l.HoraFim }),
+                                                 "hour", "hour");
             return View(marcacaoDuvidas);
         }
 

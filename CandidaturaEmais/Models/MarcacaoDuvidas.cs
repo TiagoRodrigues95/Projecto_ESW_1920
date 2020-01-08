@@ -13,6 +13,8 @@ namespace CandidaturaEmais.Models
 
         //FK
         /// <value>ForeignKey - ID hora que foi marcada para a Marcação de dúvidas</value>
+        [Display(Name = "Hora")]
+        [Required(ErrorMessage = "{0} é obrigatório!")]
         public int HoraId { get; set; }
 
         /// <value>ForeignKey - ID aluno que efetuo a marcação</value>

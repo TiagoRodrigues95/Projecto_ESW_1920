@@ -35,10 +35,10 @@ namespace CandidaturaEmais.Models
         //Prop Navegacional
 
         ///<value>Propriedade de Navegação - modelo de Utilizador atribuída ao PFC</value>
-        public Utilizador Aluno { get; set; }
+        public Utilizador Docente { get; set; }
 
         ///<value>Propriedade de Navegação - modelo de Utilizador atribuída ao PFC</value>
-        public Utilizador Docente { get; set; }
+        public Utilizador Aluno { get; set; }
 
         public PFC()
         {

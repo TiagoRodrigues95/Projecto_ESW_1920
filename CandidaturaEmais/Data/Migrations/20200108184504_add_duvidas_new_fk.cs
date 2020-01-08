@@ -1,11 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CandidaturaEmais.Data.Migrations
 {
-    public partial class add_duvidas : Migration
+    public partial class add_duvidas_new_fk : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.CreateTable(
                 name: "MarcacaoDuvidas",
                 columns: table => new
@@ -23,7 +25,7 @@ namespace CandidaturaEmais.Data.Migrations
                         column: x => x.AlunoId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_MarcacaoDuvidas_Hora_HoraId",
                         column: x => x.HoraId,
@@ -31,6 +33,8 @@ namespace CandidaturaEmais.Data.Migrations
                         principalColumn: "HoraId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            
 
             migrationBuilder.CreateIndex(
                 name: "IX_MarcacaoDuvidas_AlunoId",
@@ -46,7 +50,13 @@ namespace CandidaturaEmais.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "InqueritoResposta");
+
+            migrationBuilder.DropTable(
                 name: "MarcacaoDuvidas");
+
+            migrationBuilder.DropTable(
+                name: "Inquerito");
         }
     }
 }

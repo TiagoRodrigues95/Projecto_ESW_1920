@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CandidaturaEmais.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200106162731_add_duvidas")]
-    partial class add_duvidas
+    [Migration("20200108184504_add_duvidas_new_fk")]
+    partial class add_duvidas_new_fk
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -201,36 +201,6 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasKey("NotificacaoId");
 
                     b.ToTable("Notificacao");
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.PFC", b =>
-                {
-                    b.Property<int>("PFCId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AlunoId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("DocenteId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("PropostaUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("PFCId");
-
-                    b.HasIndex("AlunoId");
-
-                    b.HasIndex("DocenteId");
-
-                    b.ToTable("PFC");
                 });
 
             modelBuilder.Entity("CandidaturaEmais.Models.Reuniao", b =>
@@ -547,21 +517,6 @@ namespace CandidaturaEmais.Data.Migrations
                     b.HasOne("CandidaturaEmais.Models.Hora", "Hora")
                         .WithMany()
                         .HasForeignKey("HoraId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CandidaturaEmais.Models.PFC", b =>
-                {
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Aluno")
-                        .WithMany()
-                        .HasForeignKey("AlunoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CandidaturaEmais.Models.Utilizador", "Docente")
-                        .WithMany()
-                        .HasForeignKey("DocenteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
