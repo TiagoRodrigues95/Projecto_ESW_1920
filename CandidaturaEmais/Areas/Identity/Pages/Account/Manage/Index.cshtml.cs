@@ -39,11 +39,11 @@ namespace CandidaturaEmais.Areas.Identity.Pages.Account.Manage
 
             [Required]
             [DataType(DataType.Text)]
-            public string Nome;
+            public string Nome { get; set; }
 
-            [Required]
-            [Display(Name = "Número IPS")]
-            public string CodigoIPS;
+            //[Required]
+            //[Display(Name = "Número IPS")]
+            //public string CodigoIPS;
 
         }
 
@@ -56,7 +56,7 @@ namespace CandidaturaEmais.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                Nome = user.Nome,
+                Nome = user.Nome
                 //CodigoIPS = user.CodigoIPS
             };
         }
